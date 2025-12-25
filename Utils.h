@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
 
-int _getch();
+int getch_compat();
 void clearScreen();
 std::pair<int,int> getTerminalSize();
+void sleepMs(int ms);

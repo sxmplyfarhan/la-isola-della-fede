@@ -1,2 +1,2 @@
-difficulty=Hard
-player_name=Elena
+difficulty=Easy
+player_name=ciao

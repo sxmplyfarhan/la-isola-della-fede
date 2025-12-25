@@ -1,36 +1,33 @@
-#include <iostream>
-#include "Menu.h"       // include the header, not Menu.cpp
-#include "Settings.cpp"
- // for now, can leave cpp
+#include "Menu.h"
+#include "Settings.h"
 #include "Utils.h"
-
+#include <iostream>
 using namespace std;
 
 int main() {
-    while(true) {
+    while (true) {
         int selected = showMenu();
         clearScreen();
 
-        switch(selected) {
-            case 0: { // PLAY
+        switch (selected) {
+            case 0: {
                 Settings s;
                 string playerName = s.get("player_name", "Player");
                 string difficulty = s.get("difficulty", "Normal");
-                cout << "Starting game for " << playerName 
+                cout << "Starting game for " << playerName
                      << " at " << difficulty << " difficulty...\n";
-                _getch();
+                getch_compat();
                 break;
             }
-            case 1: // CREDITS
+            case 1:
                 cout << "Credits coming soon!\n";
-                _getch();
+                getch_compat();
                 break;
-            case 2: { // SETTINGS
+            case 2: {
                 Settings s;
                 s.showMenu();
                 break;
             }
         }
     }
-    return 0;
 }
