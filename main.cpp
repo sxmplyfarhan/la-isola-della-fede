@@ -5,6 +5,7 @@
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 #endif
+#include <time.h>
 using namespace std;
 
 
@@ -59,7 +60,7 @@ void livelloEsperienza() {
     }
 }
 
-void combattimento(int livello, int &uccisioni, string mobs[3]){
+void combattimento(int livello, int &nemiciUccisi, string mobs[3]){
 
     string scelta;
     string mob = mobs[rand() % 3];
@@ -72,7 +73,7 @@ void combattimento(int livello, int &uccisioni, string mobs[3]){
         cin >> scelta;
         if (scelta == attaccare) {
             cout << "Hai attaccato : " << mob << " e lo hai sconfitto!" << endl;
-            uccisioni++;
+            nemiciUccisi++;
         } else if (scelta == pieta) {
             cout << "Sei stato misericordioso con : " << mob << " e lo hai lasciato andare.Tuttavia prendi del danno :(" << endl;
         } else if (scelta == scappare) {
@@ -445,7 +446,7 @@ void introduzioneGioco(){
     cout << "\033[97;0m";
 
     cout << "\nInizi con 5 cuori e puoi arrivare fino a 20.\n";
-    cout << "I nemici fanno piu danno quando hai piu cuori.\n";
+    cout << "I nemici fanno piu' danno quando hai piu' cuori.\n";
     cout << "L'inventario non ha limiti di spazio.\n";
     cout << "Ci sono 4 livelli: 3 con mostri e boss, e l'ultimo con il boss finale.\n";
     cout << "I boss possono dropare amuleti e danno sempre una chiave.\n";
@@ -505,6 +506,7 @@ int main() {
     #if defined(_WIN32) || defined(_WIN64)
     SetConsoleOutputCP(CP_UTF8);
     #endif
+    srand(time(NULL));
     while (true) {
         clearScreen();
         printTitle();
@@ -521,6 +523,9 @@ int main() {
         cin >> choice;
         if (choice == 1) {
             introduzioneGioco();
+            combattimento(1, uccisioni1, mobs1);
+            combattimento(2, uccisioni2, mobs2);
+            combattimento(3, uccisioni3, mobs3);
         } else if (choice == 2) {
             showCredits();
         } else if (choice == 3) {
