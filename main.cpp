@@ -78,6 +78,7 @@ void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
             vita -= 1;
         } else if (scelta == scappare) {
         cout << "Sei scappato da : " << mob << " per curarti." << endl;
+            vita += 3;
         } else {
             cout << "Scelta non valida. " << mob << " ti ha attaccato mentre eri indeciso!" << endl;
             vita -= 3;
@@ -105,6 +106,7 @@ void combattimentoNormale(int livello, int &nemiciUccisi, string mobs[3]){
             vita -= 2;
         } else if (scelta == scappare) {
         cout << "Sei scappato da : " << mob << " per curarti." << endl;
+            vita += 2;
         } else {
             cout << "Scelta non valida. " << mob << " ti ha attaccato mentre eri indeciso!" << endl;
             vita -= 6;
@@ -132,6 +134,7 @@ void combattimentoDifficile(int livello, int &nemiciUccisi, string mobs[3]){
             vita -= 4;
         } else if (scelta == scappare) {
         cout << "Sei scappato da : " << mob << " per curarti." << endl;
+            vita += 1;
         } else {
             cout << "Scelta non valida. " << mob << " ti ha attaccato mentre eri indeciso!" << endl;
             vita -= 9;
