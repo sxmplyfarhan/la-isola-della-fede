@@ -1,4 +1,5 @@
 ## l'isola-della-fede
+---
 Cose? Un gioco interactive fiction. 
 Basato su un ragazzo rapito e messo su una isola a sopravvivere.
 
@@ -9,6 +10,8 @@ Pochi secondi dopo la finestra si frantuma con un rumore secco. I vetri esplodon
 Provi a reagire, ma uno di loro ti raggiunge e ti stordisce. I suoni si confondono e perdi conoscenza.
 
 Quando riapri gli occhi, ti ritrovi su un’isola insieme ai ladri, legato e confuso. In qualche modo riesci a liberarti e a scappare, allontanandoti da loro senza fare rumore. Intorno a te c’è un’isola: selvaggia, sconosciuta e silenziosa. I ladri potrebbero trovarti da un momento all’altro, ma il pensiero più urgente è capire come scappare dall’isola.
+
+---
 
 ### Contenuto del gioco:
 - Impostazioni
