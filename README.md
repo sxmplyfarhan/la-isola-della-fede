@@ -1,6 +1,6 @@
 ## l'isola-della-fede
----
-Cose? Un gioco interactive fiction. 
+###Cose? 
+Un gioco interactive fiction. 
 Basato su un ragazzo rapito e messo su una isola a sopravvivere.
 
 ---
