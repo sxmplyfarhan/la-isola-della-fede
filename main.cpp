@@ -377,92 +377,6 @@ void scegliMenu(){
         menuVita();
     }
 }
-//funzioni per quando vai avanti. RANDOM
-void niente(){
-    cout << "Non hai trovato niente";
-}
-void apriChest() {
-    clearScreen();
-    scegliMenu();
-    displayChest();
-    linea();
-    cout << "Hai trovato un forziere misterioso..." << endl;
-    Invio();
-
-    int chance = rand() % 100; 
-
-    if (chance < 20) {
-        cout << "Il forziere è vuoto... che delusione." << endl;
-    } else {
-        int itemType = rand() % 6; 
-        switch (itemType) {
-            case 0: { 
-                cout << "Hai trovato una pozione di cura!" << endl;
-                double heal = 3.0;
-                vita += heal;
-                cout << "Ti senti meglio. + " << heal << " vita. (Totale: " << vita << ")" << endl;
-                break;
-            }
-            case 1: { 
-                cout << "Hai bevuto una pozione strana... era avvelenata!" << endl;
-                applyDamage(2.0);
-                cout << "- 2.0" << " vita. (Totale: " << vita << ")" << endl;
-                break;
-            }
-            case 2: { 
-                cout << "Hai trovato una pozione nera... la tocchi e senti il gelo della morte!" << endl;
-                if (hasTotem) {
-                    cout << "Il tuo totem si illumina e ti salva dalla morte certa!" << endl;
-                    hasTotem = false;
-                } else {
-                    applyDamage(1000000.0);
-                }
-                break;
-            }
-            case 3: { 
-                if (hasTotem) {
-                    cout << "Hai trovato un altro totem... ma ne hai già uno attivo. Lo lasci dove sta." << endl;
-                } else {
-                    cout << "Hai trovato un totem della seconda vita!" << endl;
-                    hasTotem = true;
-                    cout << "Ora sarai salvato una volta se muori." << endl;
-                }
-                break;
-            }
-            case 4: { 
-                cout << "Hai trovato della frutta fresca!" << endl;
-                double heal = 1.5;
-                vita += heal;
-                cout << "Ti cura leggermente. + " << heal << " vita. (Totale: " << vita << ")" << endl;
-                break;
-            }
-            case 5: { 
-                if (hasShield) {
-                    cout << "Hai trovato uno scudo... ma ne hai già uno. Lo lasci per non appesantirti." << endl;
-                } else {
-                    cout << "Hai trovato uno scudo magico!" << endl;
-                    hasShield = true;
-                    cout << "50% di probabilità di bloccare il prossimo danno." << endl;
-                }
-                break;
-            }
-        }
-    }
-    linea();
-    Invio();
-}
-void combattimento(int livello, int &nemiciUccisi, string mobs[3]) {
-    if (difficulty == "Facile"){
-        combattimentoFacile(livello, nemiciUccisi, mobs);
-    }
-    else if (difficulty == "Normale"){
-        combattimentoNormale(livello, nemiciUccisi, mobs);
-    }
-    else if (difficulty == "Difficile"){
-        combattimentoDifficile(livello, nemiciUccisi, mobs);
-    }
-}
-//Funzione danno
 void applyDamage(double damage) {
     if (hasShield) {
         int chance = rand() % 2; 
@@ -501,6 +415,81 @@ void applyDamage(double damage) {
         exit(0);
     }
 }
+//funzioni per quando vai avanti. RANDOM
+void niente(){
+    cout << "Non hai trovato niente";
+}
+void apriChest() {
+    clearScreen();
+    scegliMenu();
+    displayChest();
+    linea();
+    cout << "Hai trovato un forziere misterioso..." << endl;
+    Invio();
+
+    int chance = rand() % 100; 
+
+    if (chance < 20) {
+        cout << "Il forziere è vuoto... che delusione." << endl;
+    } else {
+        int itemType = rand() % 6; 
+        switch (itemType) {
+            case 0: { 
+                cout << "Hai trovato una pozione di cura!" << endl;
+                double heal = 3.0;
+                vita += heal;
+                cout << "Ti senti meglio. + " << heal << " vita. (Totale: " << vita << ")" << endl;
+                break;
+            }
+            case 1: { 
+                cout << "Hai bevuto una pozione strana... era avvelenata!" << endl;
+                applyDamage(2.0);
+                cout << "- 2.0" << " vita. (Totale: " << vita << ")" << endl;
+                break;
+            }
+            case 2: { 
+                cout << "Hai trovato una pozione nera... la tocchi e senti il gelo della morte!" << endl;
+                if (hasTotem) {
+                    cout << "Il tuo totem si illumina e ti salva dalla morte certa!" << endl;
+                    hasTotem = false;
+                } else {
+                    applyDamage(1000000000.0);
+                }
+                break;
+            }
+            case 3: { 
+                if (hasTotem) {
+                    cout << "Hai trovato un altro totem... ma ne hai già uno attivo. Lo lasci dove sta." << endl;
+                } else {
+                    cout << "Hai trovato un totem della seconda vita!" << endl;
+                    hasTotem = true;
+                    cout << "Ora sarai salvato una volta se muori." << endl;
+                }
+                break;
+            }
+            case 4: { 
+                cout << "Hai trovato della frutta fresca!" << endl;
+                double heal = 1.5;
+                vita += heal;
+                cout << "Ti cura leggermente. + " << heal << " vita. (Totale: " << vita << ")" << endl;
+                break;
+            }
+            case 5: { 
+                if (hasShield) {
+                    cout << "Hai trovato uno scudo... ma ne hai già uno. Lo lasci per non appesantirti." << endl;
+                } else {
+                    cout << "Hai trovato uno scudo magico!" << endl;
+                    hasShield = true;
+                    cout << "50% di probabilità di bloccare il prossimo danno." << endl;
+                }
+                break;
+            }
+        }
+    }
+    linea();
+    Invio();
+}
+//Funzione danno
 //funzioni combattimento con difficolta "Facile/Normale/Difficile"
 void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
     clearScreen();
@@ -524,6 +513,7 @@ void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
             nemiciUccisi++;
             cout << "Hai perso della vita...";
             applyDamage(1.0);
+            livelloEsperienza();
         } else if (scelta == pieta) {
             cout << "Sei stato misericordioso con : " << mob << " e lo hai lasciato andare.Tuttavia prendi del danno :(" << endl;
             applyDamage(1.0);
@@ -558,6 +548,7 @@ void combattimentoDifficile(int livello, int &nemiciUccisi, string mobs[3]){
             nemiciUccisi++;
             cout << "Hai perso della vita...";
             applyDamage(3.0);
+            livelloEsperienza();
         } else if (scelta == pieta) {
             cout << "Sei stato misericordioso con : " << mob << " e lo hai lasciato andare.Tuttavia prendi del danno :(" << endl;
             applyDamage(4.0);
@@ -592,6 +583,7 @@ void combattimentoNormale(int livello, int &nemiciUccisi, string mobs[3]){
             nemiciUccisi++;
             cout << "Hai perso della vita...";
             applyDamage(1.5);
+            livelloEsperienza();
         } else if (scelta == pieta) {
             cout << "Sei stato misericordioso con : " << mob << " e lo hai lasciato andare.Tuttavia prendi del danno :(" << endl;
             applyDamage(2.0);
@@ -603,6 +595,17 @@ void combattimentoNormale(int livello, int &nemiciUccisi, string mobs[3]){
         }
     }
     Invio();
+}
+void combattimento(int livello, int &nemiciUccisi, string mobs[3]) {
+    if (difficulty == "Facile"){
+        combattimentoFacile(livello, nemiciUccisi, mobs);
+    }
+    else if (difficulty == "Normale"){
+        combattimentoNormale(livello, nemiciUccisi, mobs);
+    }
+    else if (difficulty == "Difficile"){
+        combattimentoDifficile(livello, nemiciUccisi, mobs);
+    }
 }
 // Combattimento Tutti i boss 
 void combattimentoGoblinKing() {
@@ -1179,7 +1182,7 @@ void livelloUno() {
                 scegliMenu();
                 displayForest();
                 linea();
-                cout << "Stai guardando la foresta fitta e oscura." << endl;
+                cout << "\nStai guardando la foresta fitta e oscura." << endl;
                 stato = FORESTA;
             }
             else if (choice == infront) {
