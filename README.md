@@ -11,7 +11,7 @@ Provi a reagire, ma uno di loro ti raggiunge e ti stordisce. I suoni si confondo
 
 Quando riapri gli occhi, ti ritrovi su un’isola insieme ai ladri, legato e confuso. In qualche modo riesci a liberarti e a scappare, allontanandoti da loro senza fare rumore. Intorno a te c’è un’isola: selvaggia, sconosciuta e silenziosa. I ladri potrebbero trovarti da un momento all’altro, ma il pensiero più urgente è capire come scappare dall’isola.
 
-Scarica Tutta la storia qua: [Premi Qua Se Sei Su MacOs!](https://github.com/sxmplyfarhan/isola-della-fede/raw/main/L’ISOLA_DELLA_FEDE.pdf)
+Scarica Tutta la storia qua: [Premi Qua Per Scaricare Tutta La Storia!](https://github.com/sxmplyfarhan/isola-della-fede/raw/main/L’ISOLA_DELLA_FEDE.pdf)
 
 ---
 
