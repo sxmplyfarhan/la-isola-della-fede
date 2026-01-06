@@ -1366,7 +1366,7 @@ void livelloUno() {
                     cout << "Ti stai incamminando lungo il sentiero.\n";
                     Invio();
                 }
-                else if (contaAvanti >= 2 && contaAvanti < 10) {
+                else if (contaAvanti >= 2 && contaAvanti < 15) {
                     int evento;
                     do {
                         evento = rand() % 3;
@@ -1502,7 +1502,7 @@ void livelloDue()
                     cout << "Ti stai incamminando lungo il sentiero." << endl;
                     Invio();
                 }
-                else if (contaAvanti >= 2 && contaAvanti < 10) {
+                else if (contaAvanti >= 2 && contaAvanti < 15) {
 
                     int evento;
                     do {
