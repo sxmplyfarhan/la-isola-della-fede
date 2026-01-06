@@ -24,9 +24,9 @@ Quando riapri gli occhi, ti ritrovi su un’isola insieme ai ladri, legato e con
 
 ## Come scaricare e provare il gioco:
 
-Windows: [Download isolaDellaFede for Windows](https://github.com/sxmplyfarhan/isola-della-fede/raw/main/isolaDellaFede_WINDOWS.zip)
+Windows: [Premi Qua Se Sei Su Windows!](https://github.com/sxmplyfarhan/isola-della-fede/raw/main/isolaDellaFede_WINDOWS.zip)
 
-Macos :
+Macos :  [Premi Qua Se Sei Su MacOs!](https://github.com/sxmplyfarhan/isola-della-fede/raw/main/isolaDellaFede_MACOS.zip)
 
 Linux : 
 
