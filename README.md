@@ -14,9 +14,21 @@ Quando riapri gli occhi, ti ritrovi su un’isola insieme ai ladri, legato e con
 ---
 
 ### Contenuto del gioco:
-- Impostazioni
+- Impostazioni, che salva le tue informazioni sul locale.
 - immagini e testo asciii
 - Funziona vita, esperienza e danno.
 - Funzione Combattimento per nemici e boss con varie difficolta (Facile/Normale/Difficile)
 - Storia semplice ma interessante
+
+---
+
+## Come scaricare e provare il gioco:
+
+Windows : 
+
+Macos :
+
+Linux : 
+
+
   
