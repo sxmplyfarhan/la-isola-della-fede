@@ -47,10 +47,12 @@ void Input(){
     cout << "\033[0m";
 }
 void Invio() {
-    cout << "\033[90m\nPremi invio per continuare...\033[0m";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear leftover input
-    cin.clear(); // reset any fail state
-    cin.get();   // wait for real Enter
+    cout << "\033[90m";
+    cout << "\nPremi invio per continuare...";
+    cout << "\033[0m";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.clear(); 
+    cin.get();   
 }
 void linea(){
     cout << "\033[35m";
@@ -607,7 +609,6 @@ void apriChest() {
     linea();
     Invio();
 }
-//Funzione danno
 //funzioni combattimento con difficolta "Facile/Normale/Difficile"
 void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
     clearScreen();
@@ -757,7 +758,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -779,7 +780,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -801,7 +802,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -824,7 +825,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -846,7 +847,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -880,7 +881,7 @@ void combattimentoVampiro() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -901,7 +902,7 @@ void combattimentoVampiro() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B'|| scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -922,7 +923,7 @@ void combattimentoVampiro() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -943,7 +944,7 @@ void combattimentoVampiro() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -964,7 +965,7 @@ void combattimentoVampiro() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -997,7 +998,7 @@ void combattimentoDrago(){
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -1018,7 +1019,7 @@ void combattimentoDrago(){
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -1039,7 +1040,7 @@ void combattimentoDrago(){
     Input();
     cin >> scelta;
 
-    if (scelta == 'B') {
+    if (scelta == 'B' || scelta == 'b') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -1060,7 +1061,7 @@ void combattimentoDrago(){
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -1083,7 +1084,7 @@ void combattimentoDrago(){
     Input();
     cin >> scelta;
 
-    if (scelta == 'C') {
+    if (scelta == 'C' || scelta == 'c') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
@@ -1137,11 +1138,35 @@ void saveSettings() {
     out.close();
 }
 //funzioni per menu inizialle
-void showCredits() {
+void showCredits() 
+{
     clearScreen();
     printCreditsTitle();
-    cout << "Questi sono i crediti";
+    cout << "\033[35m";
+    cout << "Benvenuto\n";
+    cout << "\033[0m";
+    cout << "\nQuesti sono i crediti.\n";
 
+    cout << "\033[35m";
+    cout << "\nVideogioco creato da:\n";
+    cout << "\033[0m";
+    cout << "\n- Elena Paduraru";
+    cout << "\n- Luka Kolami";
+    cout << "\n- Muhammad Farhan Nasir";
+    cout << "\n- Maryam Bibi\n";
+
+    cout << "\033[35m";
+    cout << "\nSiti:";
+    cout << "\033[0m\n ";
+    cout << "\nImmagini Ascii: ";
+    cout << "\033[34m";
+    cout << "https://www.asciiart.eu/";
+    cout << "\033[0m";
+    cout << "\nScritte Ascii: ";
+    cout << "\033[34m";
+    cout << "https://patorjk.com/software/taag/\n";
+    cout << "\033[0m";
+    Invio();
 }
 void showSettings() {
     while(true) {
@@ -1408,9 +1433,8 @@ void livelloUno() {
             }
         }
 
-        Invio();
 
-    } while (true);
+    } while (contaAvanti <= 10);
 }
 void livelloDue() 
 {
@@ -1630,7 +1654,7 @@ void livelloTre()
         }
 
 
-    } while (true);
+    } while (contaAvanti <= 10);
 
 }
 void boss() {
@@ -1861,6 +1885,32 @@ void boss() {
     cout << "Hai aperto la porta..";
     Invio();
     
+    double percentualeUccisioni = 0.0;
+    if (nemiciIncontrati > 0) {
+    percentualeUccisioni = (double)contoNemiciUccisi / nemiciIncontrati * 100.0;
+    }
+
+    clearScreen();
+    displayBedroom();
+
+    cout << "\nIl tuo destino viene rivelato...\n";
+
+    if (percentualeUccisioni <= 20.0) {
+    cout << "\033[35mFinale Buono:\033[0m\n";
+    cout << "Hai ucciso pochi nemici.. ti risvegli, e realizzi che era solo un sogno.\n";
+    cout << "Ma le memorie di quella isola ti inseguiranno fino alla morte..";
+    } else if (percentualeUccisioni >= 80.0) {
+    cout << "\033[31mFinale Cattivo:\033[0m\n";
+    cout << "Hai ucciso troppi nemici.. ti risvegli a 90 anni, condannato dai tuoi peccati.\n";
+    cout << "Tutti le persone che amavi.. sono andate.. hai perso tutto. Che peccato..";
+    } else {
+    cout << "\033[33mFinale Neutro:\033[0m\n";
+        cout << "Le tue scelte sono state miste.. ti risvegli da un coma dopo alcuni mesi.\n";
+        cout << "La tua vita ritorna come prima.."
+    }
+
+
+
 
     
 }
