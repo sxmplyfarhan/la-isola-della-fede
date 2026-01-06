@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <cstdlib>
+#include <cstdio>
+#include <limits>
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 #endif
@@ -281,117 +282,124 @@ void livelloEsperienza() {
             }
     }
 }
-void menuVita(){
-    cout << "\033[31m";
-    cout << "┌─────────────┐";
-    cout << "\033[0m\n";
-    cout << "\033[31m";
-    cout << "| ";
-    cout << "\033[0m";
-    cout << "Vita = " << vita;
-    cout << "\033[31m";
-    cout << "    | ";
-    cout << "\033[0m\n"; 
-    cout << "\033[31m";
-    cout << "└─────────────┘";
-    cout << "\033[0m\n";
+void menuVita() {
+    char vitaStr[20];
+    snprintf(vitaStr, sizeof(vitaStr), "%.1f", vita); // 1 decimal place
+
+    string content = string("Vita = ") + vitaStr;
+    int padding = 2;
+    int width = content.length() + padding * 2;
+
+    // Top
+    cout << "\033[31m┌";
+    for (int i = 0; i < width; ++i) cout << "─";
+    cout << "┐\033[0m\n";
+
+    // Middle
+    cout << "\033[31m│\033[0m";
+    cout << string(padding, ' ') << content << string(padding, ' ');
+    cout << "\033[31m│\033[0m\n";
+
+    // Bottom
+    cout << "\033[31m└";
+    for (int i = 0; i < width; ++i) cout << "─";
+    cout << "┘\033[0m\n";
 }
-void menuVitaPiuScudo(){
-    cout << "\033[31m";
-    cout << "┌─────────────┐";
-    cout << "\033[0m";
-    cout << "\033[90m";
-    cout << " ┌──────────────┐";
-    cout << "\033[0m";
-    cout << "\033[31m\n";
-    cout << "| ";
-    cout << "\033[0m";
-    cout << "Vita = " << vita;
-    cout << "\033[31m";
-    cout << "    | ";
-    cout << "\033[0m"; 
-    cout << "\033[90m";
-    cout << "| ";
-    cout << "\033[0m"; 
-    cout << "Scudo = True";
-    cout << "\033[90m";
-    cout << " | ";
-    cout << "\033[0m\n"; 
-    cout << "\033[31m";
-    cout << "└─────────────┘";
-    cout << "\033[0m";
-    cout << "\033[90m";
-    cout << " └──────────────┘";
-    cout << "\033[0m\n";
+void menuVitaPiuScudo() {
+    char vitaStr[20];
+    snprintf(vitaStr, sizeof(vitaStr), "%.1f", vita);
+    string vitaContent = string("Vita = ") + vitaStr;
+    string shieldContent = "Scudo = True";
+
+    int vitaWidth = vitaContent.length() + 2;    // 1 space padding each side
+    int shieldWidth = shieldContent.length() + 2;
+
+    // Top row
+    cout << "\033[31m┌";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┐\033[0m";
+    cout << "\033[90m ┌";
+    for (int i = 0; i < shieldWidth; ++i) cout << "─";
+    cout << "┐\033[0m\n";
+
+    // Middle row
+    cout << "\033[31m│\033[0m " << vitaContent << " " << "\033[31m│\033[0m";
+    cout << "\033[90m │ \033[0m" << shieldContent << "\033[90m │\033[0m\n";
+
+    // Bottom row
+    cout << "\033[31m└";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┘\033[0m";
+    cout << "\033[90m └";
+    for (int i = 0; i < shieldWidth; ++i) cout << "─";
+    cout << "┘\033[0m\n";
 }
-void menuVitaPiuTotem(){
-    cout << "\033[31m";
-    cout << "┌─────────────┐";
-    cout << "\033[0m";
-    cout << "\033[33m";
-    cout << " ┌──────────────┐";
-    cout << "\033[0m";
-    cout << "\033[31m\n";
-    cout << "| ";
-    cout << "\033[0m";
-    cout << "Vita = " << vita;
-    cout << "\033[31m";
-    cout << "    |";
-    cout << "\033[0m"; 
-    cout << "\033[33m";
-    cout << " | ";
-    cout << "\033[0m"; 
-    cout << "Totem = True";
-    cout << "\033[33m";
-    cout << " | ";
-    cout << "\033[0m\n"; 
-    cout << "\033[31m";
-    cout << "└─────────────┘";
-    cout << "\033[0m";
-    cout << "\033[33m";
-    cout << " └──────────────┘";
-    cout << "\033[0m\n";
+void menuVitaPiuTotem() {
+    char vitaStr[20];
+    snprintf(vitaStr, sizeof(vitaStr), "%.1f", vita);
+    string vitaContent = string("Vita = ") + vitaStr;
+    string totemContent = "Totem = True";
+
+    int vitaWidth = vitaContent.length() + 2;
+    int totemWidth = totemContent.length() + 2;
+
+    // Top row
+    cout << "\033[31m┌";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┐\033[0m";
+    cout << "\033[33m ┌";
+    for (int i = 0; i < totemWidth; ++i) cout << "─";
+    cout << "┐\033[0m\n";
+
+    // Middle row
+    cout << "\033[31m│\033[0m " << vitaContent << " " << "\033[31m│\033[0m";
+    cout << "\033[33m │ \033[0m" << totemContent << " \033[33m│\033[0m\n";
+
+    // Bottom row
+    cout << "\033[31m└";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┘\033[0m";
+    cout << "\033[33m └";
+    for (int i = 0; i < totemWidth; ++i) cout << "─";
+    cout << "┘\033[0m\n";
 }
-void menuVitaConTutto(){
-    cout << "\033[31m";
-    cout << "┌─────────────┐";
-    cout << "\033[0m";
-    cout << "\033[33m";
-    cout << " ┌──────────────┐";
-    cout << "\033[0m";
-    cout << "\033[90m";
-    cout << " ┌──────────────┐";
-    cout << "\033[0m";
-    cout << "\033[31m\n";
-    cout << "| ";
-    cout << "\033[0m";
-    cout << "Vita = " << vita;
-    cout << "\033[31m";
-    cout << "    |";
-    cout << "\033[0m"; 
-    cout << "\033[33m";
-    cout << " | ";
-    cout << "\033[0m"; 
-    cout << "Totem = True";
-    cout << "\033[33m";
-    cout << " |";
-    cout << "\033[0m"; 
-    cout << "\033[90m";
-    cout << " | ";
-    cout << "\033[0m"; 
-    cout << "Scudo = True";
-    cout << "\033[90m";
-    cout << " | ";
-    cout << "\033[0m\n"; 
-    cout << "\033[31m";
-    cout << "└─────────────┘";
-    cout << "\033[0m";
-    cout << "\033[33m";
-    cout << " └──────────────┘";
-    cout << "\033[0m";
-    cout << "\033[90m";
-    cout << " └──────────────┘";
-    cout << "\033[0m\n";
+void menuVitaConTutto() {
+    char vitaStr[20];
+    snprintf(vitaStr, sizeof(vitaStr), "%.1f", vita);
+    string vitaContent = string("Vita = ") + vitaStr;
+    string totemContent = "Totem = True";
+    string shieldContent = "Scudo = True";
+
+    int vitaWidth = vitaContent.length() + 2;
+    int totemWidth = totemContent.length() + 2;
+    int shieldWidth = shieldContent.length() + 2;
+
+    // Top row
+    cout << "\033[31m┌";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┐\033[0m";
+    cout << "\033[33m ┌";
+    for (int i = 0; i < totemWidth; ++i) cout << "─";
+    cout << "┐\033[0m";
+    cout << "\033[90m ┌";
+    for (int i = 0; i < shieldWidth; ++i) cout << "─";
+    cout << "┐\033[0m\n";
+
+    // Middle row
+    cout << "\033[31m│\033[0m " << vitaContent << " " << "\033[31m│\033[0m";
+    cout << "\033[33m │ \033[0m" << totemContent << "\033[33m │\033[0m";
+    cout << "\033[90m │ \033[0m" << shieldContent << "\033[90m │\033[0m\n";
+
+    // Bottom row
+    cout << "\033[31m└";
+    for (int i = 0; i < vitaWidth; ++i) cout << "─";
+    cout << "┘\033[0m";
+    cout << "\033[33m └";
+    for (int i = 0; i < totemWidth; ++i) cout << "─";
+    cout << "┘\033[0m";
+    cout << "\033[90m └";
+    for (int i = 0; i < shieldWidth; ++i) cout << "─";
+    cout << "┘\033[0m\n";
 }
 void menuGoblinKey(){
     cout << "\033[32m";
@@ -470,7 +478,7 @@ void menuVampiroPiuGoblin(){
     cout << "\033[35m";
     cout << " | ";
     cout << "\033[0m"; 
-    cout << "\033[32m";
+    cout << "\033[32m\n";
     cout << "└───────────────────────┘";
     cout << "\033[0m";
     cout << "\033[35m";
@@ -495,8 +503,8 @@ void scegliMenu(){
         menuGoblinKey();
     }
 }
-void applyDamage(double damage) {
-    if (hasShield) {
+void applyDamage(double damage, bool isBoss = false) {
+    if (!isBoss && hasShield) {   // shield works only if it's not a boss
         int chance = rand() % 2; 
         if (chance == 0) {
             cout << "\nIl tuo scudo blocca completamente il danno!" << endl;
@@ -509,10 +517,8 @@ void applyDamage(double damage) {
         }
     }
 
-    
     vita -= damage;
 
-    
     if (vita <= 0.01 && hasTotem) {
         clearScreen();
         scegliMenu();
@@ -524,7 +530,6 @@ void applyDamage(double damage) {
         return;
     }
 
-    
     if (vita <= 0.01) {
         clearScreen();
         displaySkull();
@@ -550,6 +555,7 @@ void apriChest() {
 
     if (chance < 20) {
         cout << "Il forziere è vuoto... che delusione." << endl;
+        Invio();
     } else {
         int itemType = rand() % 6; 
         switch (itemType) {
@@ -558,12 +564,13 @@ void apriChest() {
                 double heal = 3.0;
                 vita += heal;
                 cout << "Ti senti meglio. + " << heal << " vita. (Totale: " << vita << ")" << endl;
+                Invio();
                 break;
             }
             case 1: { 
-                cout << "Hai bevuto una pozione strana... era avvelenata!" << endl;
+                cout << "Hai bevuto una pozione strana... era avvelenata! (-2.0 Della tua vita originale!)" << endl;
                 applyDamage(2.0);
-                cout << "- 2.0" << " vita. (Totale: " << vita << ")" << endl;
+                Invio();
                 break;
             }
             case 2: { 
@@ -572,6 +579,7 @@ void apriChest() {
                     cout << "Il tuo totem si illumina e ti salva dalla morte certa!" << endl;
                     hasTotem = false;
                 } else {
+                    Invio();
                     applyDamage(1000000000.0);
                 }
                 Invio();
@@ -585,6 +593,7 @@ void apriChest() {
                     hasTotem = true;
                     cout << "Ora sarai salvato una volta se muori." << endl;
                 }
+                Invio();
                 break;
             }
             case 4: { 
@@ -592,6 +601,7 @@ void apriChest() {
                 double heal = 1.5;
                 vita += heal;
                 cout << "Ti cura leggermente. + " << heal << " vita. (Totale: " << vita << ")" << endl;
+                Invio();
                 break;
             }
             case 5: { 
@@ -602,12 +612,12 @@ void apriChest() {
                     hasShield = true;
                     cout << "50% di probabilità di bloccare il prossimo danno." << endl;
                 }
+                Invio();
                 break;
             }
         }
     }
     linea();
-    Invio();
 }
 //funzioni combattimento con difficolta "Facile/Normale/Difficile"
 void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
@@ -619,6 +629,7 @@ void combattimentoFacile(int livello, int &nemiciUccisi, string mobs[3]){
         displayMob(mob);
         linea();
     cout << "Sei stato fortunato, la farfalla ti cura!" << endl;
+    Invio();
     vita += 4;
     return; 
 }
@@ -655,10 +666,11 @@ void combattimentoDifficile(int livello, int &nemiciUccisi, string mobs[3]){
     string scelta;
     string mob = mobs[rand() % 3];
     if (livello == 2 && mob == "Farfalla") {
-                scegliMenu();
+        scegliMenu();
         displayMob(mob);
         linea();
     cout << "Sei stato fortunato, la farfalla ti cura!" << endl;
+    Invio();
     vita += 0.5;
     return; // finisce il combattimento
 }
@@ -700,6 +712,7 @@ void combattimentoNormale(int livello, int &nemiciUccisi, string mobs[3]){
         linea();
     cout << "Sei stato fortunato, la farfalla ti cura!" << endl;
     vita += 3;
+    Invio();
     return; // finisce il combattimento
 }
     else{
@@ -762,7 +775,7 @@ void combattimentoGoblinKing() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -784,7 +797,7 @@ void combattimentoGoblinKing() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -806,7 +819,7 @@ void combattimentoGoblinKing() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita); 
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -829,7 +842,7 @@ void combattimentoGoblinKing() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);  
+        applyDamage(toglivita, true); 
     }
 
     Invio();
@@ -851,7 +864,7 @@ void combattimentoGoblinKing() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
     
     Invio();
@@ -885,7 +898,7 @@ void combattimentoVampiro() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -906,7 +919,7 @@ void combattimentoVampiro() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -927,7 +940,7 @@ void combattimentoVampiro() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita); 
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -948,7 +961,7 @@ void combattimentoVampiro() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita); 
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -969,7 +982,7 @@ void combattimentoVampiro() {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita); 
+        applyDamage(toglivita, true); 
     }
 
 
@@ -1002,7 +1015,7 @@ void combattimentoDrago(){
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita); 
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -1023,7 +1036,7 @@ void combattimentoDrago(){
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);   
     }
 
     Invio();
@@ -1044,7 +1057,7 @@ void combattimentoDrago(){
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -1065,7 +1078,7 @@ void combattimentoDrago(){
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     
@@ -1088,7 +1101,7 @@ void combattimentoDrago(){
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/5 della tua vita.." << endl;
-        applyDamage(toglivita);
+        applyDamage(toglivita, true);
     }
 
     Invio();
@@ -1340,6 +1353,7 @@ void livelloUno() {
                 linea();
                 cout << "Stai guardando la foresta fitta e oscura.\n";
                 stato = FORESTA;
+                Invio();
             }
             else if (choice == infront) {
                 clearScreen();
@@ -1350,6 +1364,7 @@ void livelloUno() {
 
                 if (contaAvanti == 1) {
                     cout << "Ti stai incamminando lungo il sentiero.\n";
+                    Invio();
                 }
                 else if (contaAvanti >= 2 && contaAvanti < 10) {
                     int evento;
@@ -1374,7 +1389,7 @@ void livelloUno() {
                             break;
                     }
                 }
-                else if (contaAvanti == 10) {
+                else if (contaAvanti == 15) {
                     cout << "Hai raggiunto la tana del Goblin King!\n";
                     Invio();
                     combattimentoGoblinKing();
@@ -1388,6 +1403,7 @@ void livelloUno() {
                 } else {
                     cout << "Sei già all'inizio dell'isola, non puoi tornare più indietro.\n";
                 }
+                Invio();
             }
         }
 
@@ -1398,6 +1414,7 @@ void livelloUno() {
                 displaySea();
                 linea();
                 cout << "L'acqua è troppo profonda, è pericoloso andare avanti.\n";
+                Invio();
             }
             else if (choice == destra || choice == sinistra) {
                 clearScreen();
@@ -1405,10 +1422,12 @@ void livelloUno() {
                 displayTrail();
                 linea();
                 cout << "Sei andato fuori strada, devi tornare indietro.\n";
+                Invio();
             }
             else if (choice == indietro) {
                 cout << "Torni sui tuoi passi.\n";
                 stato = NORMALE;
+                Invio();
             }
         }
 
@@ -1419,6 +1438,7 @@ void livelloUno() {
                 displayForest();
                 linea();
                 cout << "La foresta è fitta e pericolosa, non sai cosa può nascondersi.\n";
+                Invio();
             }
             else if (choice == destra || choice == sinistra) {
                 clearScreen();
@@ -1426,15 +1446,17 @@ void livelloUno() {
                 displayTrail();
                 linea();
                 cout << "Sei andato fuori strada, devi tornare indietro.\n";
+                Invio();
             }
             else if (choice == indietro) {
                 cout << "Torni sui tuoi passi.\n";
                 stato = NORMALE;
+                Invio();
             }
         }
 
 
-    } while (contaAvanti <= 10);
+    } while (contaAvanti <= 15);
 }
 void livelloDue() 
 {
@@ -1467,6 +1489,7 @@ void livelloDue()
                 linea();
                 cout << "\nStai guardando la foresta fitta e oscura." << endl;
                 stato = FORESTA;
+                Invio();
             }
             else if (choice == infront) {
                 clearScreen();
@@ -1477,6 +1500,7 @@ void livelloDue()
 
                 if (contaAvanti == 1) {
                     cout << "Ti stai incamminando lungo il sentiero." << endl;
+                    Invio();
                 }
                 else if (contaAvanti >= 2 && contaAvanti < 10) {
 
@@ -1510,7 +1534,7 @@ void livelloDue()
                         }
                     }
                 }
-                else if (contaAvanti == 10) 
+                else if (contaAvanti == 15) 
                 {
                     cout << "Sei arrivato alla fortezza del tuo nemico!!\nIl Re Vampiro!!" << endl;
                     Invio();
@@ -1542,7 +1566,7 @@ void livelloDue()
         stato = NORMALE;
 
 
-    } while (contaAvanti <= 10);
+    } while (contaAvanti <= 15);
 
 }
 void livelloTre() 
@@ -1584,6 +1608,7 @@ void livelloTre()
                 linea();
                 cout << "\nStai guardando la foresta fitta e oscura." << endl;
                 stato = FORESTA;
+                Invio();
             }
             else if (choice == infront) {
                 clearScreen();
@@ -1594,8 +1619,9 @@ void livelloTre()
 
                 if (contaAvanti == 1) {
                     cout << "Ti stai incamminando lungo il sentiero." << endl;
+                    Invio();
                 }
-                else if (contaAvanti >= 2 && contaAvanti < 10) {
+                else if (contaAvanti >= 2 && contaAvanti < 15) {
 
                     int evento;
                     do {
@@ -1627,7 +1653,7 @@ void livelloTre()
                         }
                     }
                 }
-                else if (contaAvanti == 10) 
+                else if (contaAvanti == 15) 
                 {
                     cout << "Sei arrivato alla fortezza del tuo nemico!!\nIl DRAGONE!!" << endl;
                     Invio();
@@ -1637,6 +1663,7 @@ void livelloTre()
                 else if (choice == indietro) 
                 {
                     cout << "Torni indietro." << endl;
+                    Invio();
                     contaAvanti--;
                 }
             }
@@ -1651,10 +1678,11 @@ void livelloTre()
             cout << "Attenzione stai andando nella forsesta!!" << endl;
             cout << "Torna indietro!!" << endl;
             stato = NORMALE;
+            Invio();
         }
 
 
-    } while (contaAvanti <= 10);
+    } while (contaAvanti <= 15);
 
 }
 void boss() {
@@ -1899,20 +1927,18 @@ void boss() {
     cout << "\033[35mFinale Buono:\033[0m\n";
     cout << "Hai ucciso pochi nemici.. ti risvegli, e realizzi che era solo un sogno.\n";
     cout << "Ma le memorie di quella isola ti inseguiranno fino alla morte..";
+    Invio();
     } else if (percentualeUccisioni >= 80.0) {
     cout << "\033[31mFinale Cattivo:\033[0m\n";
     cout << "Hai ucciso troppi nemici.. ti risvegli a 90 anni, condannato dai tuoi peccati.\n";
     cout << "Tutti le persone che amavi.. sono andate.. hai perso tutto. Che peccato..";
+    Invio();
     } else {
     cout << "\033[33mFinale Neutro:\033[0m\n";
         cout << "Le tue scelte sono state miste.. ti risvegli da un coma dopo alcuni mesi.\n";
-        cout << "La tua vita ritorna come prima.."
+        cout << "La tua vita ritorna come prima..";
+        Invio();
     }
-
-
-
-
-    
 }
 //Main
 int main() {
@@ -1933,6 +1959,7 @@ int main() {
         int choice;
         cin >> choice;
         if (choice == 1) {
+            introduzioneGioco();
             livelloUno();
             livelloDue();
             livelloTre();
