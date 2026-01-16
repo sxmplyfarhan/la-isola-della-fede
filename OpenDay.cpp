@@ -813,7 +813,7 @@ void combattimentoGoblinKing() {
     Input();
     cin >> scelta;
 
-    if (scelta == 'B' || scelta == 'b') {
+    if (scelta == 'A' || scelta == 'a') {
         cout << "Hai risposto correttamente..\nChe fortuna che hai avuto.. non hai perso vita." << endl;
     } else {
         cout << "Hai risposto male... hai perso 1/3 della tua vita.." << endl;
